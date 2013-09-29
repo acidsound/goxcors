@@ -1,5 +1,5 @@
 # goxcors
-go CORS proxy server
+go CORS/JSONP proxy server to avoid Same-Origin-Policy on browser
 
 ## how to run
 	
@@ -9,4 +9,10 @@ go CORS proxy server
 
 ## example
 
-	curl "http://localhost:8080/post?http://translate.google.com/translate_a/t?client=x&sl=&tl=en&text=%EC%97%AC%EB%9F%AC%EB%B6%84%EC%9D%B4%20%EB%AA%A8%EB%A5%B4%EB%8A%94%20%EA%B5%AC%EA%B8%80%20%EB%B2%88%EC%97%AD%EA%B8%B0"
+	curl "http://localhost:8080/jsonp?method=POST&callback=call&url=http%3A%2F%2Ftranslate.google.com%2Ftranslate_a%2Ft%3Fclient%3Dx%26sl%3D%26tl%3Den%26text%3D%25EC%2597%25AC%25EB%259F%25AC%25EB%25B6%2584%25EC%259D%25B4%2520%25EB%25AA%25B0%25EB%259E%2590%25EB%258D%2598%2520%25EA%25B5%25AC%25EA%25B8%2580%2520%25EB%25B2%2588%25EC%2597%25AD%25EA%25B8%25B0"
+
+## usage
+* by CORS
+	http://localhost:8080/cors?method=GET&callback=call&url=...
+* by JSONP (for IE)
+	http://localhost:8080/jsonp?method=POST&callback=call&url=...
