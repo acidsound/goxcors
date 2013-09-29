@@ -8,4 +8,4 @@
 
 ## example
 
-  curl "http://localhost:8080/post?http://translate.google.com/translate_a/t?client=x&sl=&tl=ko&text=%EC%95%BC%EC%98%B9%EC%95%84%20%EB%A9%8D%EB%A9%8D%ED%95%B4%EB%B4%90"
+	curl "http://localhost:8080/post?http://translate.google.com/translate_a/t?client=x&sl=&tl=en&text=%EC%97%AC%EB%9F%AC%EB%B6%84%EC%9D%B4%20%EB%AA%A8%EB%A5%B4%EB%8A%94%20%EA%B5%AC%EA%B8%80%20%EB%B2%88%EC%97%AD%EA%B8%B0"
