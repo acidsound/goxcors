@@ -1,4 +1,5 @@
 # goxcors
+go CORS proxy server
 
 ## how to run
 	
