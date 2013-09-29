@@ -7,7 +7,6 @@ import (
 	"github.com/gorilla/mux"
 	"appengine/urlfetch"
 	"io/ioutil"
-	"strings"
 )
 
 func init() {
@@ -20,14 +19,12 @@ func init() {
 func getCrossDomainRequest(w http.ResponseWriter, r *http.Request) {
 	c := appengine.NewContext(r)
 	client := urlfetch.Client(c)
-	reqURL := strings.Split(r.URL.RawQuery,"/post?")[0]
-	c.Infof("Reqeusted URL: %q", reqURL)
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Headers", "X-Requested-With")
-	w.Header().Set("User-Agent", "Mozilla/5.0 (X11; Linux x86_64; rv:5.0) Gecko/20100101 Firefox/5.0)")
 
-	req, err := http.NewRequest("POST", reqURL, nil)
-	req.Header.Add("User-Agent", "myClient")
+	req, err := http.NewRequest("POST", r.URL.RawQuery, nil)
+	req.Header.Add("Access-Control-Allow-Origin", "*")
+	req.Header.Add("Access-Control-Allow-Headers", "X-Requested-With")
+	req.Header.Add("User-Agent", "Mozilla/5.0 (X11; Linux x86_64; rv:5.0) Gecko/20100101 Firefox/5.0)")
+
 	resp, err := client.Do(req)
 	defer resp.Body.Close()
 	body, err :=ioutil.ReadAll(resp.Body)
@@ -36,5 +33,6 @@ func getCrossDomainRequest(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "{'err':'%s'", err)
 		return
 	}
+	c.Infof("%s", body)
 	fmt.Fprintf(w, "%s", body)
 }
