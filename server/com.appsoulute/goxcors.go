@@ -19,10 +19,10 @@ func init() {
 func getCrossDomainRequest(w http.ResponseWriter, r *http.Request) {
 	c := appengine.NewContext(r)
 	client := urlfetch.Client(c)
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "X-Requested-With")
 
 	req, err := http.NewRequest("POST", r.URL.RawQuery, nil)
-	req.Header.Add("Access-Control-Allow-Origin", "*")
-	req.Header.Add("Access-Control-Allow-Headers", "X-Requested-With")
 	req.Header.Add("User-Agent", "Mozilla/5.0 (X11; Linux x86_64; rv:5.0) Gecko/20100101 Firefox/5.0)")
 
 	resp, err := client.Do(req)
