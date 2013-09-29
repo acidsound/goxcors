@@ -30,7 +30,7 @@ func getCrossDomainRequest(w http.ResponseWriter, r *http.Request) {
 	body, err :=ioutil.ReadAll(resp.Body)
 	if err != nil {
 		c.Errorf("ioutil error Get %s", err)
-		fmt.Fprintf(w, "{'err':'%s'", err)
+		fmt.Fprintf(w, "{'err':'%s'}", err)
 		return
 	}
 	c.Infof("%s", body)
