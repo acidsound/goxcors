@@ -19,3 +19,6 @@ CORS/JSONP proxy server to avoid Same-Origin-Policy on browser
 	http://localhost:8080/cors?method=GET&url=...
 * by JSONP (for IE)
 	http://localhost:8080/jsonp?method=POST&callback=call&url=...
+
+## demo
+http://goxcors.appspot.com
